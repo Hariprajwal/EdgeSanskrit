@@ -1,8 +1,19 @@
 # EdgeSanskrit ☸️
 
-**EdgeSanskrit** is a high-speed, dependency-free Sanskrit Text-to-Speech (TTS) engine designed to run efficiently on the **edge** (CPUs, local machines, and low-resource environments) utilizing the **Kokoro-82M** architecture. 
+### 🎧 Authentic Sanskrit Chanting (Phase 2 - CPU Inference)
+**Vishnu Sahasranama Invocation (Anushtubh):**
+<br>
+<video src="https://github.com/Hariprajwal/EdgeSanskrit/raw/main/v2_vishnu.wav" controls="controls" type="audio/wav"></video>
 
-It achieves **faster-than-real-time CPU inference (~0.55x RTF)** while delivering high-quality Sanskrit pronunciation, bypassing the complex, error-prone OS-level dependencies (like `espeak-ng`) and solving the classic **Hindi schwa-deletion** issue.
+**Bhagavad Gita 1.1 (Anushtubh):**
+<br>
+<video src="https://github.com/Hariprajwal/EdgeSanskrit/raw/main/v2_gita_1_1.wav" controls="controls" type="audio/wav"></video>
+
+---
+
+**EdgeSanskrit** is a high-speed, dependency-free Sanskrit Text-to-Speech (TTS) engine designed to run efficiently on the **edge** (CPUs, local machines, and low-resource environments).
+
+It achieves **faster-than-real-time CPU inference** while delivering high-quality Sanskrit pronunciation, bypassing complex OS-level dependencies (like `espeak-ng`) and solving the classic **Hindi schwa-deletion** issue.
 
 ---
 
