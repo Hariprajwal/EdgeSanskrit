@@ -7,13 +7,12 @@ It achieves **faster-than-real-time CPU inference** while delivering high-qualit
 ---
 
 ### 🎧 Authentic Sanskrit Chanting (Phase 2 - CPU Inference)
-**Vishnu Sahasranama Invocation (Anushtubh):**
-<br>
-<video src="https://github.com/Hariprajwal/EdgeSanskrit/raw/main/v2_vishnu.mp4" controls="controls"></video>
 
-**Bhagavad Gita 1.1 (Anushtubh):**
-<br>
-<video src="https://github.com/Hariprajwal/EdgeSanskrit/raw/main/v2_gita_1_1.mp4" controls="controls"></video>
+**[▶️ Play Vishnu Sahasranama Invocation (Anushtubh)](https://github.com/Hariprajwal/EdgeSanskrit/blob/main/v2_vishnu.mp4)**  
+*Click to listen to the generated chanting (MP4 video player will open).*
+
+**[▶️ Play Bhagavad Gita 1.1 (Anushtubh)](https://github.com/Hariprajwal/EdgeSanskrit/blob/main/v2_gita_1_1.mp4)**  
+*Click to listen to the generated chanting (MP4 video player will open).*
 
 ---
 
