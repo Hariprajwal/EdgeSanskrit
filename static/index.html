@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdgeSanskrit | Authentic Chanting</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>EdgeSanskrit <span>☸️</span></h1>
+            <p>Authentic CPU-Optimized Sanskrit Speech Synthesis</p>
+        </header>
+
+        <main class="glass-panel">
+            <div class="input-group">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <label for="sanskritText" style="margin-bottom: 0;">Enter Text</label>
+                    <div class="lang-toggle">
+                        <label><input type="radio" name="inputLang" value="english" checked> English (Auto-Translate)</label>
+                        <label style="margin-left: 10px;"><input type="radio" name="inputLang" value="sanskrit"> Devanagari</label>
+                    </div>
+                </div>
+                <textarea id="sanskritText" placeholder="Example: The battlefield of Kurukshetra..." rows="4"></textarea>
+            </div>
+
+            <div class="controls-group">
+                <div class="control-item">
+                    <label for="meterSelect">Meter (Chandas)</label>
+                    <div class="select-wrapper">
+                        <select id="meterSelect">
+                            <option value="anushtubh">Anushtubh (8 syllables)</option>
+                            <option value="vasantatilaka">Vasantatilaka (14 syllables)</option>
+                            <option value="malini">Malini (15 syllables)</option>
+                            <option value="sragdhara">Sragdhara (21 syllables)</option>
+                            <option value="upajati">Upajati (11 syllables)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-item">
+                    <label for="voiceSelect">Voice Model</label>
+                    <div class="select-wrapper">
+                        <select id="voiceSelect">
+                            <option value="indicf5">Base IndicF5 (Fastest)</option>
+                            <option value="vagdhenu">Vāgdhenu Premium (~5GB RAM)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button id="synthesizeBtn" class="primary-btn">
+                <span class="btn-text">Generate Chanting</span>
+                <span class="btn-loader"></span>
+            </button>
+
+            <div id="resultContainer" class="result-container hidden">
+                <h3>Generated Audio</h3>
+                <div id="translatedText" style="margin-bottom: 1rem; color: var(--text-muted); font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 1.2rem;"></div>
+                <audio id="audioPlayer" controls></audio>
+                <a id="downloadLink" href="#" download="chant.wav" class="secondary-btn">Download .wav</a>
+            </div>
+            
+            <div id="errorContainer" class="error-container hidden">
+                <p id="errorMessage"></p>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Powered by AI4Bharat IndicF5 & Vāgdhenu Phonetics</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

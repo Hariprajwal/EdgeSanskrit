@@ -251,20 +251,31 @@ class SanskritChantEngine:
 
         # ── 3. Load Vocos vocoder ───────────────────────────────────────
         print("[EdgeSanskrit] Loading Vocos vocoder...")
-        self.vocoder  = load_vocoder("vocos")
+        vocos_local = os.path.join(HERE, "models", "vocos")
+        if os.path.exists(vocos_local):
+            from vocos import Vocos
+            self.vocoder = Vocos.from_pretrained(vocos_local).to(device)
+            print("[EdgeSanskrit] Loaded Vocos from local bundled models/vocos")
+        else:
+            self.vocoder = load_vocoder("vocos")
         self._refcache: dict = {}
         print("[EdgeSanskrit] Vocos loaded. Engine ready.\n")
 
     # ── Weight loaders ────────────────────────────────────────────────
 
     def _load_indicf5_weights(self):
-        """Download and load base IndicF5 weights from ai4bharat/IndicF5 on HuggingFace."""
-        from huggingface_hub import hf_hub_download
+        """Load base IndicF5 weights from local bundle or HuggingFace."""
         from safetensors.torch import load_file
-
-        print("[EdgeSanskrit] Downloading ai4bharat/IndicF5 weights from HuggingFace...")
-        ckpt = hf_hub_download(repo_id="ai4bharat/IndicF5", filename="model.safetensors")
-        print(f"[EdgeSanskrit] Checkpoint: {ckpt}")
+        
+        local_ckpt = os.path.join(HERE, "models", "IndicF5", "model.safetensors")
+        if os.path.exists(local_ckpt):
+            print(f"[EdgeSanskrit] Loading bundled IndicF5 from {local_ckpt}")
+            ckpt = local_ckpt
+        else:
+            from huggingface_hub import hf_hub_download
+            print("[EdgeSanskrit] Downloading ai4bharat/IndicF5 weights from HuggingFace...")
+            ckpt = hf_hub_download(repo_id="ai4bharat/IndicF5", filename="model.safetensors")
+            print(f"[EdgeSanskrit] Checkpoint: {ckpt}")
 
         sd = load_file(ckpt, device="cpu")
         # Strip the EMA module prefix that IndicF5 uses during training
