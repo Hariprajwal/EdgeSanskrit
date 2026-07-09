@@ -3,11 +3,11 @@
 ### 🎧 Authentic Sanskrit Chanting (Phase 2 - CPU Inference)
 **Vishnu Sahasranama Invocation (Anushtubh):**
 <br>
-<video src="https://github.com/Hariprajwal/EdgeSanskrit/raw/main/v2_vishnu.wav" controls="controls" type="audio/wav"></video>
+<video src="https://github.com/Hariprajwal/EdgeSanskrit/raw/main/v2_vishnu.mp4" controls="controls"></video>
 
 **Bhagavad Gita 1.1 (Anushtubh):**
 <br>
-<video src="https://github.com/Hariprajwal/EdgeSanskrit/raw/main/v2_gita_1_1.wav" controls="controls" type="audio/wav"></video>
+<video src="https://github.com/Hariprajwal/EdgeSanskrit/raw/main/v2_gita_1_1.mp4" controls="controls"></video>
 
 ---
 
