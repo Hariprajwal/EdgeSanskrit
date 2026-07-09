@@ -121,8 +121,57 @@ Tested using Bhagavad Gita Verse 1.1:
 
 ---
 
-## 🗺️ Roadmap & F5 Chanting Exploration
-Currently researching an alternate, heavyweight pipeline utilizing the **IndicF5/F5-TTS (337M)** architecture. While significantly slower on CPU (~3x RTF), it will enable **zero-shot chanting voice cloning** based on authentic Sanskrit pārāyaṇa recordings.
+## 🗺️ Phase 2 — Authentic Sanskrit Chanting (IndicF5)
+
+For maximum phonetic authenticity — matching the quality of real Sanskrit pārāyaṇa — **Phase 2** replaces the Kokoro speech engine with **IndicF5**, an Indic multilingual flow-matching DiT fine-tuned on Sanskrit chanting reference audio.
+
+### Why IndicF5?
+
+| Property | Kokoro v1 | IndicF5 v2 |
+| :--- | :--- | :--- |
+| **Parameters** | 82M | 337M |
+| **Voice source** | Hindi speech packs | Real Sanskrit chanting (Prof. Prathosh, IISc) |
+| **Prosody** | Fixed Hindi intonation | Zero-shot cloning of swara, pace & timbre |
+| **Text routing** | Devanagari → IPA | Devanagari → **Kannada** (prevents Hindi schwa-deletion) |
+| **Vocoder** | iSTFTNet | Vocos / BigVGAN-v2 |
+
+The key insight: **the "authentic Indian touch" comes from the reference audio**, not just the model. The reference WAVs in `vagdhenu/src/reference_bank/` are recordings of an actual Sanskrit chanter. IndicF5 clones the voice timbre, pitch contour (swara), and chanting rhythm from those 5-12 second clips for any new verse.
+
+### v2 Installation
+
+```bash
+# 1. Install IndicF5 (must use the AI4Bharat GitHub fork — PyPI version crashes)
+pip install "git+https://github.com/ai4bharat/IndicF5.git@13f7c4d627cc10111aea8fe9c0039462cacacdc7"
+
+# 2. Install remaining dependencies
+pip install vocos x-transformers indic-transliteration librosa torchaudio safetensors
+
+# 3. Clone Vagdhenu reference audio bank
+git clone https://github.com/prathoshap/vagdhenu vagdhenu
+
+# 4. Run prerequisite check
+python test_run_v2.py --check-only
+```
+
+### v2 Script Usage
+
+```bash
+# Default (base IndicF5, zero-shot cloning, NFE=12 for CPU speed)
+python generate_sanskrit_v2.py "धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः"
+
+# With meter specification
+python generate_sanskrit_v2.py --text "..." --meter vasantatilaka --output chant.wav
+
+# Use Vagdhenu's Prof. Prathosh voice-steered model (~5GB download)
+python generate_sanskrit_v2.py --text "..." --voice-model vagdhenu
+
+# Higher quality, slower (default 12, max 64)
+python generate_sanskrit_v2.py --text "..." --nfe 32
+```
+
+---
+
+
 
 ---
 

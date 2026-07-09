@@ -1,0 +1,38 @@
+# =====================================================================
+# EdgeSanskrit — Requirements
+# =====================================================================
+# Python 3.10+ required.
+# Install with: pip install -r requirements.txt
+# =====================================================================
+
+# ── Phase 1: Kokoro CPU TTS ──────────────────────────────────────────
+# Kokoro (StyleTTS2-based, 82M params) for fast local CPU inference
+kokoro>=0.9.4
+huggingface_hub
+torch
+numpy
+soundfile
+loguru
+
+# ── Phase 2: IndicF5 Authentic Sanskrit Chanting ─────────────────────
+# IMPORTANT: You MUST use AI4Bharat's IndicF5 fork from GitHub.
+# The PyPI package `f5-tts` is different code and its infer_process CRASHES.
+# Install the exact production commit used by Vagdhenu:
+git+https://github.com/ai4bharat/IndicF5.git@13f7c4d627cc10111aea8fe9c0039462cacacdc7
+
+# Vocos vocoder (mel-to-audio decoder, required by IndicF5)
+vocos>=0.1.0
+
+# IndicF5 transformer backbone dependency
+x-transformers>=2.19.7
+
+# Indic script transliteration (Sanskrit ↔ Kannada ↔ SLP1 etc.)
+# Required by vagdhenu/src/prep_text.py for Devanagari → Kannada routing
+indic-transliteration
+
+# Audio loading / processing
+librosa
+torchaudio
+
+# SafeTensors format for loading IndicF5 base model weights
+safetensors

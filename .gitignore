@@ -16,3 +16,16 @@ __pycache__/
 venv/
 env/
 .env
+
+
+# Ignore Python compiler files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore local configs / virtual environments
+.venv/
+venv/
+env/
+.env
