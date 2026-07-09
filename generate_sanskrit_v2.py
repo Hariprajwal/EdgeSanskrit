@@ -45,6 +45,12 @@ import argparse
 import numpy as np
 import torch
 
+# Force UTF-8 output on Windows (prevents cp1252 UnicodeEncodeError for Devanagari/macrons)
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 # ── Repo-relative path setup (must come first) ───────────────────────────
 HERE         = os.path.dirname(os.path.abspath(__file__))
 VAGDHENU_SRC = os.path.join(HERE, "vagdhenu", "src")

@@ -10,6 +10,12 @@ import sys
 import time
 import numpy as np
 
+# Force UTF-8 output on Windows (prevents cp1252 UnicodeEncodeError)
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # ── Test verses ──────────────────────────────────────────────────────────────
@@ -128,10 +134,10 @@ def run_tests(nfe: int = 12, voice_model: str = "indicf5"):
 
     results = []
     for tc in TEST_CASES:
-        print(f"\n{'─'*60}")
+        print(f"\n{'-'*60}")
         print(f"  Test: {tc['name']}")
         print(f"  Meter: {tc['meter']}")
-        print(f"{'─'*60}")
+        print(f"{'-'*60}")
 
         t0 = time.perf_counter()
         sr, audio = engine.synthesize(
@@ -163,9 +169,9 @@ def run_tests(nfe: int = 12, voice_model: str = "indicf5"):
     print("  SUMMARY")
     print(f"{'='*60}")
     print(f"  {'Test':<35} {'Dur':>6} {'Elapsed':>8} {'RTF':>6}")
-    print(f"  {'─'*35} {'─'*6} {'─'*8} {'─'*6}")
+    print(f"  {'-'*35} {'-'*6} {'-'*8} {'-'*6}")
     for r in results:
-        status = "🔴 slow" if r["rtf"] > 10 else ("🟡" if r["rtf"] > 3 else "🟢")
+        status = "[SLOW]" if r["rtf"] > 10 else ("[OK]" if r["rtf"] > 3 else "[FAST]")
         print(f"  {r['name'][:35]:<35} {r['audio_dur']:>5.1f}s {r['elapsed']:>7.1f}s {r['rtf']:>5.2f}x {status}")
 
     print(f"\n  Generated audio files:")
