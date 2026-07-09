@@ -62,6 +62,9 @@ VOCAB_FILE   = os.path.join(BANK_DIR, "vocab.txt")
 if VAGDHENU_SRC not in sys.path:
     sys.path.insert(0, VAGDHENU_SRC)
 
+# Import Vagdhenu's Sanskrit→Kannada text converter (module-level so IDEs can resolve it)
+import prep_text as PT  # noqa: E402  (sys.path must be extended first)
+
 # ── Load .env file (HF token, etc.) ────────────────────────────────────
 try:
     from dotenv import load_dotenv
@@ -352,15 +355,6 @@ class SanskritChantEngine:
             (sample_rate, audio_float32_array)
         """
         from f5_tts.infer.utils_infer import infer_process
-
-        # Import Vagdhenu's text converter
-        try:
-            import prep_text as PT
-        except ImportError:
-            raise ImportError(
-                "Cannot import prep_text. Ensure vagdhenu/src/ is cloned "
-                "and on sys.path."
-            )
 
         padas = _split_padas(text)
         if not padas:
