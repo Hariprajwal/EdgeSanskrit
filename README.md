@@ -1,5 +1,11 @@
 # EdgeSanskrit ☸️
 
+**EdgeSanskrit** is a high-speed, dependency-free Sanskrit Text-to-Speech (TTS) engine designed to run efficiently on the **edge** (CPUs, local machines, and low-resource environments).
+
+It achieves **faster-than-real-time CPU inference** while delivering high-quality Sanskrit pronunciation, bypassing complex OS-level dependencies (like `espeak-ng`) and solving the classic **Hindi schwa-deletion** issue.
+
+---
+
 ### 🎧 Authentic Sanskrit Chanting (Phase 2 - CPU Inference)
 **Vishnu Sahasranama Invocation (Anushtubh):**
 <br>
@@ -8,12 +14,6 @@
 **Bhagavad Gita 1.1 (Anushtubh):**
 <br>
 <video src="https://github.com/Hariprajwal/EdgeSanskrit/raw/main/v2_gita_1_1.mp4" controls="controls"></video>
-
----
-
-**EdgeSanskrit** is a high-speed, dependency-free Sanskrit Text-to-Speech (TTS) engine designed to run efficiently on the **edge** (CPUs, local machines, and low-resource environments).
-
-It achieves **faster-than-real-time CPU inference** while delivering high-quality Sanskrit pronunciation, bypassing complex OS-level dependencies (like `espeak-ng`) and solving the classic **Hindi schwa-deletion** issue.
 
 ---
 
@@ -179,15 +179,6 @@ python generate_sanskrit_v2.py --text "..." --voice-model vagdhenu
 # Higher quality, slower (default 12, max 64)
 python generate_sanskrit_v2.py --text "..." --nfe 32
 ```
-
-### Sample Outputs
-Listen to the authentic chanting generated on CPU (IndicF5 at NFE=12):
-- [Bhagavad Gita 1.1 (Anushtubh)](v2_gita_1_1.wav)
-- [Vishnu Sahasranama Invocation](v2_vishnu.wav)
-
----
-
-
 
 ---
 
