@@ -169,6 +169,11 @@ python generate_sanskrit_v2.py --text "..." --voice-model vagdhenu
 python generate_sanskrit_v2.py --text "..." --nfe 32
 ```
 
+### Sample Outputs
+Listen to the authentic chanting generated on CPU (IndicF5 at NFE=12):
+- [Bhagavad Gita 1.1 (Anushtubh)](v2_gita_1_1.wav)
+- [Vishnu Sahasranama Invocation](v2_vishnu.wav)
+
 ---
 
 
